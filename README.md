@@ -3,4 +3,4 @@ This project uses Selenium to upload random avatars from a specified folder to V
 If the project is built into a jar, crontab can be used to launch the jar at a specified interval.
 
 
-For question email to agentrg.development@gmail.com 
+For questions email to agentrg.development@gmail.com 
