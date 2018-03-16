@@ -3,6 +3,7 @@ This project uses Selenium to upload random avatars from a specified folder to V
 If the project is built into a jar, crontab can be used to launch the jar at a specified interval.
 
 ChromeDriver is required for the jar to run!
+
 https://sites.google.com/a/chromium.org/chromedriver/
 
 For questions email to agentrg.development@gmail.com 
