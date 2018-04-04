@@ -10,9 +10,9 @@ public class changeAvatarStrings extends Main {
     static String myPassword = " ";
     static String pathToAvatars = " ";
     static String loginOption = "//a[text()='Login']";
-    static String emailTab = "//*[@id='register-email']";
-    static String passwordTab = "//*[@id='register-password']";
-    static String loginToAccount = "//*[@class='btn btn-primary']";
+    static String emailTab = "//*[@type='email']";
+    static String passwordTab = "//*[@type='password']";
+    static String loginToAccount = "//*[@type='submit']";
     static String loadingContainer = "//*[@class='container-2oOGIt']";
     static String optionsButton = "//*[@class='button-1aU9q1']";
     static String optionsContainer ="//*[@class='layers-20RVFW flex-vertical flex-spacer']";
