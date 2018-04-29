@@ -13,12 +13,12 @@ public class changeAvatarStrings extends Main {
     static String emailTab = "//*[@type='email']";
     static String passwordTab = "//*[@type='password']";
     static String loginToAccount = "//*[@type='submit']";
-    static String loadingContainer = "//*[@class='container-2oOGIt']";
-    static String optionsButton = "//*[@class='button-1aU9q1']";
-    static String optionsContainer ="//*[@class='layers-20RVFW flex-vertical flex-spacer']";
+    static String loadingContainer = "//*[@class='container-16j22k']";
+    static String optionsButton = "//*[@class='button-2b6hmh']";
+    static String optionsContainer ="//*[@class='layers-3iHuyZ flex-vertical flex-spacer']";
     static String editProfile = "//button[contains(@class, 'userInfoViewingButton')]";
     static String uploadButton = "//input[@class='file-input']";
-    static String saveButton = "//button[contains(@class, 'colorGreen-22At8E')]";
+    static String saveButton = "//button[contains(@class, 'Green')]";
 
 }
 
