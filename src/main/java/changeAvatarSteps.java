@@ -1,8 +1,11 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class changeAvatarSteps extends Main {
+
+    private static boolean staleElement = true;
 
     public static void changeAvatar() throws InterruptedException {
         driver.navigate().to("https://discordapp.com/");
@@ -16,8 +19,16 @@ public class changeAvatarSteps extends Main {
     }
 
     private static void loginScreen() {
-        WebElement loginButton = driver.findElement(By.xpath(changeAvatarStrings.loginOption));
-        loginButton.click();
+        while(staleElement) {
+            try {
+                WebElement loginButton = driver.findElement(By.xpath(changeAvatarStrings.loginOption));
+                loginButton.click();
+                staleElement = false;
+            }
+            catch(StaleElementReferenceException e) {
+                staleElement = true;
+            }
+        }
     }
 
     private static void enterInformation() {
