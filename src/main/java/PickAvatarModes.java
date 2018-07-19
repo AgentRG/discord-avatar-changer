@@ -2,10 +2,17 @@ import java.io.*;
 import java.util.Random;
 import java.util.Scanner;
 
-public class changeAvatarModes extends Main {
+public class PickAvatarModes extends Main {
+
+    /**
+     * These are the two modes are available for changing your avatar.
+     * 1. randomChoice will pick a random picture that it will find in the directory you provided.
+     * 2. incrementalChoice will create a text file in the the directory you provided, and edit the text every time the jar is launched.
+     *    The first line in the text file will be the picture it picks as the avatar. Accepts only jpg, jpeg, and png.
+     */
 
     static String avatarName;
-    private static File[] avatarArray = new File(changeAvatarStrings.pathToAvatars).listFiles();
+    private static File[] avatarArray = new File(UserInfo.pathToAvatars).listFiles();
     private static String previousName;
     private static String currentLine;
 
@@ -14,15 +21,15 @@ public class changeAvatarModes extends Main {
         File avatarInteger = avatarArray[rand.nextInt(avatarArray.length)];
         avatarName = avatarInteger.toString();
 
-        changeAvatarSteps.changeAvatar();
+        ChangeAvatarSteps.changeAvatar();
     }
 
     public static void incrementalChoice() throws IOException, InterruptedException {
-        File f = new File(changeAvatarStrings.pathToAvatars+"avatar_list.txt");
-        File tmp = new File(changeAvatarStrings.pathToAvatars+"tmp.txt");
+        File f = new File(UserInfo.pathToAvatars+"avatar_list.txt");
+        File tmp = new File(UserInfo.pathToAvatars+"tmp.txt");
         if (!f.exists()) {
             FileWriter fileWriter;
-            fileWriter = new FileWriter(changeAvatarStrings.pathToAvatars+"avatar_list.txt");
+            fileWriter = new FileWriter(UserInfo.pathToAvatars+"avatar_list.txt");
             PrintWriter printWriter = new PrintWriter(fileWriter);
             for (int i = 0; i < avatarArray.length; i++)
                 if (!avatarArray[i].isHidden()) {
@@ -39,11 +46,11 @@ public class changeAvatarModes extends Main {
             result = scan.nextLine();
             avatarName = result;
             previousName = avatarName;
-            avatarName = changeAvatarStrings.pathToAvatars + avatarName;
+            avatarName = UserInfo.pathToAvatars + avatarName;
         }
-        changeAvatarSteps.changeAvatar();
+        ChangeAvatarSteps.changeAvatar();
 
-        BufferedReader reader = new BufferedReader(new FileReader(changeAvatarStrings.pathToAvatars+"avatar_list.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader(UserInfo.pathToAvatars+"avatar_list.txt"));
         BufferedWriter writer = new BufferedWriter(new FileWriter(tmp));
 
         while((currentLine = reader.readLine()) != null) {

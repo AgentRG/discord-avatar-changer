@@ -1,14 +1,9 @@
-public class changeAvatarStrings extends Main {
+public class DiscordXPath extends Main {
 
     /**
-     * 1. Type your email in myEmail.
-     * 2. Type your password in myPassword.
-     * 3. Type the full path to the folder where your avatars are stored.
+     * These are the xpaths required to change the avatar.
      */
 
-    static String myEmail = "";
-    static String myPassword = "";
-    static String pathToAvatars = "";
     static String loginOption = "//a[text()='Login']";
     static String emailTab = "//*[@type='email']";
     static String passwordTab = "//*[@type='password']";
@@ -21,4 +16,3 @@ public class changeAvatarStrings extends Main {
     static String saveButton = "//button[contains(@class, 'Green')]";
 
 }
-
