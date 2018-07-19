@@ -16,7 +16,7 @@ public class PickAvatarModes extends Main {
     private static String previousName;
     private static String currentLine;
 
-    public static void randomChoice() throws InterruptedException {
+    public static void randomChoice() {
         Random rand = new Random();
         File avatarInteger = avatarArray[rand.nextInt(avatarArray.length)];
         avatarName = avatarInteger.toString();
@@ -24,7 +24,7 @@ public class PickAvatarModes extends Main {
         ChangeAvatarSteps.changeAvatar();
     }
 
-    public static void incrementalChoice() throws IOException, InterruptedException {
+    public static void incrementalChoice() throws IOException {
         File f = new File(UserInfo.pathToAvatars+"avatar_list.txt");
         File tmp = new File(UserInfo.pathToAvatars+"tmp.txt");
         if (!f.exists()) {
