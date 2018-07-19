@@ -1,6 +1,5 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ChangeAvatarSteps extends Main {
@@ -12,7 +11,7 @@ public class ChangeAvatarSteps extends Main {
 
     private static boolean staleElement = true;
 
-    public static void changeAvatar() throws InterruptedException {
+    public static void changeAvatar() {
         driver.navigate().to("https://discordapp.com/");
         loginScreen();
         enterInformation();
@@ -27,8 +26,7 @@ public class ChangeAvatarSteps extends Main {
     private static void loginScreen() {
         while(staleElement) {
             try {
-                WebElement loginButton = driver.findElement(By.xpath(DiscordXPath.loginOption));
-                loginButton.click();
+                wait.until(ExpectedConditions.elementToBeClickable(By.xpath(DiscordXPath.loginOption))).click();
                 staleElement = false;
             }
             catch(StaleElementReferenceException e) {
@@ -39,41 +37,41 @@ public class ChangeAvatarSteps extends Main {
 
     private static void enterInformation() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(DiscordXPath.emailTab)));
-        WebElement email = driver.findElement(By.xpath(DiscordXPath.emailTab));
-        email.sendKeys(UserInfo.myEmail);
-
-        WebElement password = driver.findElement(By.xpath(DiscordXPath.passwordTab));
-        password.sendKeys(UserInfo.myPassword);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(DiscordXPath.emailTab))).sendKeys(UserInfo.myEmail);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(DiscordXPath.passwordTab))).sendKeys(UserInfo.myPassword);
     }
 
     private static void loginToAccount() {
-        WebElement loginToAccount = driver.findElement(By.xpath(DiscordXPath.loginToAccount));
-        loginToAccount.click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(DiscordXPath.loginToAccount))).click();
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(DiscordXPath.loginToAccount)));
     }
 
     private static void userSettings() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(DiscordXPath.loadingContainer)));
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(DiscordXPath.loadingContainer)));
-        WebElement options = driver.findElement(By.xpath(DiscordXPath.optionsButton));
-        options.click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(DiscordXPath.optionsButton))).click();
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(DiscordXPath.optionsButton)));
     }
 
-    private static void editAccount() throws InterruptedException {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(DiscordXPath.optionsContainer)));
-        Thread.sleep(1000);
-        WebElement edit = driver.findElement(By.xpath(DiscordXPath.editProfile));
-        edit.click();
+    private static void editAccount() {
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(DiscordXPath.optionsContainer)));
+            Thread.sleep(1000);
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath(DiscordXPath.editProfile))).click();
+        }
+        catch (Exception e) {
+
+        }
     }
 
-    private static void uploadAvatar() throws InterruptedException {
+    private static void uploadAvatar() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(DiscordXPath.saveButton)));
         driver.findElement(By.xpath(DiscordXPath.uploadButton)).sendKeys(PickAvatarModes.avatarName);
-        WebElement save = driver.findElement(By.xpath(DiscordXPath.saveButton));
-        save.click();
-        Thread.sleep(1000);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(DiscordXPath.saveButton))).click();
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(DiscordXPath.saveButton)));
     }
 
     private static void logoutAccount() {
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(DiscordXPath.saveButton)));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(DiscordXPath.logoutButton))).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(DiscordXPath.confirmLogout)));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(DiscordXPath.confirmLogout))).click();
