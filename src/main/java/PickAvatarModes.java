@@ -20,8 +20,12 @@ public class PickAvatarModes extends Main {
         Random rand = new Random();
         File avatarInteger = avatarArray[rand.nextInt(avatarArray.length)];
         avatarName = avatarInteger.toString();
-
-        ChangeAvatarSteps.changeAvatar();
+        if(avatarName.contains(".png") || avatarName.contains(".jpeg") || avatarName.contains(".png")) {
+            ChangeAvatarSteps.changeAvatar();
+        }
+        else {
+            randomChoice();
+        }
     }
 
     public static void incrementalChoice() throws IOException {
