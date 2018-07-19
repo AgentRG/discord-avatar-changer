@@ -14,5 +14,7 @@ public class DiscordXPath extends Main {
     static String editProfile = "//button[contains(@class, 'userInfoViewingButton')]";
     static String uploadButton = "//input[@class='file-input']";
     static String saveButton = "//button[contains(@class, 'Green')]";
+    static String logoutButton = "//div[@class='itemDefault-3Jdr52 item-PXvHYJ notSelected-1N1G5p' and .='Log Out']";
+    static String confirmLogout = "//button[@type='submit' and .='Log Out']";
 
 }

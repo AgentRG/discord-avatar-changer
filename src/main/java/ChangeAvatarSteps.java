@@ -20,6 +20,7 @@ public class ChangeAvatarSteps extends Main {
         userSettings();
         editAccount();
         uploadAvatar();
+        logoutAccount();
         driver.quit();
     }
 
@@ -70,5 +71,15 @@ public class ChangeAvatarSteps extends Main {
         save.click();
         Thread.sleep(1000);
     }
+
+    private static void logoutAccount() {
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(DiscordXPath.saveButton)));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(DiscordXPath.logoutButton))).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(DiscordXPath.confirmLogout)));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(DiscordXPath.confirmLogout))).click();
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(DiscordXPath.confirmLogout)));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(DiscordXPath.emailTab)));
+    }
+
 }
 
