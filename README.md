@@ -1,10 +1,11 @@
 # discord-avatar-changer
-This project uses Selenium to upload and set an avatar from a specified folder to the VoIP software Discord. There project has two modes:
+This project uses Selenium to upload and set an avatar from a specified folder to the VoIP software Discord.
 
-1. Randomly pick an avatar.
-2. Incrementally pick an avatar.
+The project has two modes.
+1. Randomly pick a picture from the folder and upload it.
+2. Incrementally upload a picture from the folder.
 
-If the project is built into a jar, crontab can be used to launch the jar at a specified interval.
+Uncomment whichever mode you want to use and fill in the required information in UserInfo.
 
 Requirements:
 1. ChromeDriver https://sites.google.com/a/chromium.org/chromedriver/
