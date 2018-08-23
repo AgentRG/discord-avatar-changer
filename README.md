@@ -1,4 +1,7 @@
 # discord-avatar-changer
+
+WARNING: It's currently against the Discord's terms of service to use account based bots.
+
 This project uses Selenium to upload and set an avatar from a specified folder to the VoIP software Discord.
 
 The project has two modes.
